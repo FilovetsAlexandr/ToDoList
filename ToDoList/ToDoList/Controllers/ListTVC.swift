@@ -23,22 +23,39 @@ class ListTVC: UITableViewController {
     
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.items.count
-    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { model.items.count }
 
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell()
+//        
+//        var configuration = UIListContentConfiguration.cell()
+//        configuration.text = model.items[indexPath.row].title
+//        configuration.secondaryText = model.items[indexPath.row].date.formatted(date: .complete, time: .shortened)
+//        
+//        cell.contentConfiguration = configuration
+//        cell.imageView?.image = model.items[indexPath.row].isCompleted ? UIImage(named: "check.png") : UIImage(named: "uncheck.png")
+//
+//        return cell
+//    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         
-        var configuration = UIListContentConfiguration.cell()
-        configuration.text = model.items[indexPath.row].title
-        configuration.secondaryText = model.items[indexPath.row].date.formatted(date: .complete, time: .shortened)
+        cell.textLabel?.text = model.items[indexPath.row].title
+        cell.detailTextLabel?.text = model.items[indexPath.row].date.formatted(date: .complete, time: .shortened)
         
-        cell.contentConfiguration = configuration
-        cell.accessoryType = model.items[indexPath.row].isCompleted ? .checkmark : .none
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = model.items[indexPath.row].isCompleted ? UIImage(named: "check.png") : UIImage(named: "uncheck.png")
+        
+        cell.accessoryView = imageView
         
         return cell
     }
+
+
+
+
+
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Rename") { _, _, completion in
@@ -66,5 +83,7 @@ class ListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         model.toogleItem(atIndex: indexPath.row)
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+
     }
 }

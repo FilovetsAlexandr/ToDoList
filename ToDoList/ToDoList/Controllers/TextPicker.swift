@@ -14,9 +14,8 @@ class TextPicker {
         alertController.addTextField()
         
         let actionOk = UIAlertAction(title: "Ok", style: .default) { _ in
-            if let text = alertController.textFields?[0].text, text != "" {
-                completion(text)
-            }
+            if let text = alertController.textFields?[0].text, text != "" { completion(text)
+}
         }
          
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)

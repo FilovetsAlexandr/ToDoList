@@ -45,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				F42AD1DE2AC5A5B800AA0AED /* ToDoList */,
-				F42AD1ED2AC5A5B900AA0AED /* Info.plist */,
 				F42AD1DD2AC5A5B800AA0AED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +60,7 @@
 		F42AD1DE2AC5A5B800AA0AED /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				F42AD1ED2AC5A5B900AA0AED /* Info.plist */,
 				F42AD1FA2AC5BE8900AA0AED /* App */,
 				F42AD1FD2AC5C52400AA0AED /* Controllers */,
 				F42AD1F72AC5B2A700AA0AED /* Models */,
