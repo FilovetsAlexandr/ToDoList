@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		F42AD1E02AC5A5B800AA0AED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1DF2AC5A5B800AA0AED /* AppDelegate.swift */; };
 		F42AD1E22AC5A5B800AA0AED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1E12AC5A5B800AA0AED /* SceneDelegate.swift */; };
-		F42AD1E42AC5A5B800AA0AED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1E32AC5A5B800AA0AED /* ViewController.swift */; };
 		F42AD1E72AC5A5B800AA0AED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42AD1E52AC5A5B800AA0AED /* Main.storyboard */; };
 		F42AD1E92AC5A5B900AA0AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F42AD1E82AC5A5B900AA0AED /* Assets.xcassets */; };
 		F42AD1EC2AC5A5B900AA0AED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F42AD1EA2AC5A5B900AA0AED /* LaunchScreen.storyboard */; };
+		F42AD1F42AC5A6D500AA0AED /* ListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1F32AC5A6D500AA0AED /* ListTVC.swift */; };
+		F42AD1F62AC5ACD000AA0AED /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1F52AC5ACD000AA0AED /* TextPicker.swift */; };
+		F42AD1F92AC5B2BC00AA0AED /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42AD1F82AC5B2BC00AA0AED /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F42AD1DC2AC5A5B800AA0AED /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42AD1DF2AC5A5B800AA0AED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F42AD1E12AC5A5B800AA0AED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F42AD1E32AC5A5B800AA0AED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F42AD1E62AC5A5B800AA0AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F42AD1E82AC5A5B900AA0AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F42AD1EB2AC5A5B900AA0AED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F42AD1ED2AC5A5B900AA0AED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42AD1F32AC5A6D500AA0AED /* ListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTVC.swift; sourceTree = "<group>"; };
+		F42AD1F52AC5ACD000AA0AED /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
+		F42AD1F82AC5B2BC00AA0AED /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				F42AD1DE2AC5A5B800AA0AED /* ToDoList */,
+				F42AD1ED2AC5A5B900AA0AED /* Info.plist */,
 				F42AD1DD2AC5A5B800AA0AED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +61,56 @@
 		F42AD1DE2AC5A5B800AA0AED /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				F42AD1DF2AC5A5B800AA0AED /* AppDelegate.swift */,
-				F42AD1E12AC5A5B800AA0AED /* SceneDelegate.swift */,
-				F42AD1E32AC5A5B800AA0AED /* ViewController.swift */,
-				F42AD1E52AC5A5B800AA0AED /* Main.storyboard */,
-				F42AD1E82AC5A5B900AA0AED /* Assets.xcassets */,
-				F42AD1EA2AC5A5B900AA0AED /* LaunchScreen.storyboard */,
-				F42AD1ED2AC5A5B900AA0AED /* Info.plist */,
+				F42AD1FA2AC5BE8900AA0AED /* App */,
+				F42AD1FD2AC5C52400AA0AED /* Controllers */,
+				F42AD1F72AC5B2A700AA0AED /* Models */,
+				F42AD1FB2AC5C0F000AA0AED /* Views */,
+				F42AD1FC2AC5C11B00AA0AED /* Resources */,
 			);
 			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		F42AD1F72AC5B2A700AA0AED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F42AD1F82AC5B2BC00AA0AED /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F42AD1FA2AC5BE8900AA0AED /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F42AD1E12AC5A5B800AA0AED /* SceneDelegate.swift */,
+				F42AD1DF2AC5A5B800AA0AED /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F42AD1FB2AC5C0F000AA0AED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F42AD1E52AC5A5B800AA0AED /* Main.storyboard */,
+				F42AD1EA2AC5A5B900AA0AED /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F42AD1FC2AC5C11B00AA0AED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F42AD1E82AC5A5B900AA0AED /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F42AD1FD2AC5C52400AA0AED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F42AD1F32AC5A6D500AA0AED /* ListTVC.swift */,
+				F42AD1F52AC5ACD000AA0AED /* TextPicker.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +184,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F42AD1E42AC5A5B800AA0AED /* ViewController.swift in Sources */,
+				F42AD1F92AC5B2BC00AA0AED /* Model.swift in Sources */,
+				F42AD1F42AC5A6D500AA0AED /* ListTVC.swift in Sources */,
 				F42AD1E02AC5A5B800AA0AED /* AppDelegate.swift in Sources */,
+				F42AD1F62AC5ACD000AA0AED /* TextPicker.swift in Sources */,
 				F42AD1E22AC5A5B800AA0AED /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
