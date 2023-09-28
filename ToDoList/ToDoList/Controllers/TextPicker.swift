@@ -9,7 +9,7 @@ import UIKit
  
 class TextPicker {
     func showPicker(in viewController: UIViewController, completion: @escaping ((String) -> Void)) {
-        let alertController = UIAlertController(title: "ToDoItem", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Enter the name of the task ", message: nil, preferredStyle: .alert)
         
         alertController.addTextField()
         

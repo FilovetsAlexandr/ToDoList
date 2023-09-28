@@ -11,7 +11,7 @@ class ToDoItem: Codable {
     var title: String
     var date: Date
     var isCompleted: Bool
-    
+
     init(title: String, date: Date, isCompleted: Bool) {
         self.title = title
         self.date = date
@@ -21,11 +21,11 @@ class ToDoItem: Codable {
 
 class Model {
     var items: [ToDoItem] = []
-    
+
     init() {
         loadData()
     }
-    
+
     func addItem(title: String) {
         items.append(ToDoItem(title: title, date: Date(), isCompleted: false))
         saveData()
@@ -40,14 +40,14 @@ class Model {
         items[index].title = newTitle
         saveData()
     }
-    
+
     func toogleItem(atIndex index: Int) {
         items[index].isCompleted.toggle()
         saveData()
     }
-    
+
     private let url = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0].appending(path: "database.data ")
-    
+
     private func saveData() {
         let data = try? JSONEncoder().encode(items)
         try? data?.write(to: url)

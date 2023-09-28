@@ -20,70 +20,57 @@ class ListTVC: UITableViewController {
             self?.tableView.reloadData()
         }
     }
-    
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { model.items.count }
 
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell()
-//        
-//        var configuration = UIListContentConfiguration.cell()
-//        configuration.text = model.items[indexPath.row].title
-//        configuration.secondaryText = model.items[indexPath.row].date.formatted(date: .complete, time: .shortened)
-//        
-//        cell.contentConfiguration = configuration
-//        cell.imageView?.image = model.items[indexPath.row].isCompleted ? UIImage(named: "check.png") : UIImage(named: "uncheck.png")
-//
-//        return cell
-//    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-        
+
         cell.textLabel?.text = model.items[indexPath.row].title
-        cell.detailTextLabel?.text = model.items[indexPath.row].date.formatted(date: .complete, time: .shortened)
-        
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+
+        let formattedDate = "Created by: " + dateFormatter.string(from: model.items[indexPath.row].date)
+        cell.detailTextLabel?.text = formattedDate
+
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         imageView.contentMode = .scaleAspectFit
         imageView.image = model.items[indexPath.row].isCompleted ? UIImage(named: "check.png") : UIImage(named: "uncheck.png")
-        
+
         cell.accessoryView = imageView
-        
+
         return cell
     }
-
-
-
-
-
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Rename") { _, _, completion in
             TextPicker().showPicker(in: self) { [weak self] text in
-                    
+
                 self?.model.renameItem(atIndex: indexPath.row, newTitle: text)
                 self?.tableView.reloadRows(at: [indexPath], with: .automatic)
                 completion(true)
             }
         }
-        
+
         return UISwipeActionsConfiguration(actions: [action])
     }
-    
+
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
-            
+
             self.model.deleteItem(atIndex: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
         }
         return UISwipeActionsConfiguration(actions: [action])
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         model.toogleItem(atIndex: indexPath.row)
         tableView.reloadRows(at: [indexPath], with: .automatic)
-        
-
     }
 }
