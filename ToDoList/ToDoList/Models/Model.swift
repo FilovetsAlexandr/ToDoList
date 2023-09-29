@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToDoItem: Codable {
+final class ToDoItem: Codable {
     var title: String
     var date: Date
     var isCompleted: Bool
@@ -19,7 +19,7 @@ class ToDoItem: Codable {
     }
 }
 
-class Model {
+final class Model {
     var items: [ToDoItem] = []
 
     init() {

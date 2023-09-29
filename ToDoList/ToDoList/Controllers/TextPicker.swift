@@ -7,7 +7,7 @@
 
 import UIKit
  
-class TextPicker {
+final class TextPicker {
     func showPicker(in viewController: UIViewController, completion: @escaping ((String) -> Void)) {
         let alertController = UIAlertController(title: "Enter the name of the task ", message: nil, preferredStyle: .alert)
         
