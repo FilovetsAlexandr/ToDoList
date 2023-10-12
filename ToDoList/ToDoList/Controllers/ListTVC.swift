@@ -10,48 +10,23 @@ import UIKit
 final class ListTVC: UITableViewController {
     
     private var model = Model()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(imageView)
         loadImageAsync()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         imageView.center = view.center
-        DispatchQueue.main.asyncAfter(deadline:.now() + 0.5, execute: { self.animate() })
-    }
-    private func loadImageAsync() {
-        DispatchQueue.global().async {
-            if let image = UIImage(named: "logo") {
-                DispatchQueue.main.async {
-                    self.imageView.image = image
-                }
-            }
-        }
-    }
-    private func animate() {
-        UIView.animate(withDuration: 1, animations: {
-            let size = self.view.frame.size.width * 3
-            let diffX = size - self.view.frame.size.width
-            let diffY = self.view.frame.size.height - size
-            self.imageView.frame = CGRect(
-                x: -(diffX/2),
-                y: diffY/2,
-                width: size,
-                height: size
-            )
-        })
-        UIView.animate(withDuration: 1.5, animations: {
-            self.imageView.alpha = 0
-        })
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.animate() }
     }
 
     @IBAction func pushAddAction(_ sender: Any) {
@@ -85,11 +60,10 @@ final class ListTVC: UITableViewController {
 
         // Изменение альфа-значения ячейки в зависимости от состояния галочки
         let alphaValue: CGFloat = model.items[indexPath.row].isCompleted ? 0.2 : 1.0
-            cell.textLabel?.alpha = alphaValue
-            cell.detailTextLabel?.alpha = alphaValue
+        cell.textLabel?.alpha = alphaValue
+        cell.detailTextLabel?.alpha = alphaValue
         return cell
     }
-
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Rename") { _, _, completion in
@@ -117,5 +91,30 @@ final class ListTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         model.toogleItem(atIndex: indexPath.row)
         tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+
+    private func loadImageAsync() {
+        DispatchQueue.global().async {
+            if let image = UIImage(named: "logo") {
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            }
+        }
+    }
+
+    private func animate() {
+        UIView.animate(withDuration: 1, animations: {
+            let size = self.view.frame.size.width * 3
+            let diffX = size - self.view.frame.size.width
+            let diffY = self.view.frame.size.height - size
+            self.imageView.frame = CGRect(
+                x: -(diffX/2),
+                y: diffY/2,
+                width: size,
+                height: size
+            )
+        })
+        UIView.animate(withDuration: 1.5, animations: { self.imageView.alpha = 0 })
     }
 }

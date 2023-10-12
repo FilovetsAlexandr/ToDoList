@@ -8,14 +8,14 @@
 import UIKit
  
 final class TextPicker {
+    
     func showPicker(in viewController: UIViewController, completion: @escaping ((String) -> Void)) {
         let alertController = UIAlertController(title: "Enter the name of the task ", message: nil, preferredStyle: .alert)
         
         alertController.addTextField()
         
         let actionOk = UIAlertAction(title: "Ok", style: .default) { _ in
-            if let text = alertController.textFields?[0].text, text != "" { completion(text)
-}
+            if let text = alertController.textFields?[0].text, text != "" { completion(text) }
         }
          
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
