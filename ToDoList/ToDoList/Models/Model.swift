@@ -22,9 +22,7 @@ final class ToDoItem: Codable {
 final class Model {
     var items: [ToDoItem] = []
 
-    init() {
-        loadData()
-    }
+    init() { loadData() }
 
     func addItem(title: String) {
         items.append(ToDoItem(title: title, date: Date(), isCompleted: false))
